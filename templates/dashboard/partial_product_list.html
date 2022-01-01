@@ -1,0 +1,29 @@
+{% for product in products %}
+    <tr>
+        <td>
+            <span class="custom-checkbox">
+                <input type="checkbox" name="options[]" id="checkbox1" value="1">
+                <label for="checkbox1"></label>
+            </span>
+        </td>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.date_added }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.product_code }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>₱{{ product.price }}</td>
+        <td class="btn-group">
+            <button type="button" class="edit js-update-product" data-url="{% url 'product-update' product.id %}">
+                <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+            </button>
+            <button type="button" class="delete js-delete-product" data-url="">
+                <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></span>
+            </button>
+        </td>
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="8" class="text-center bg-warning">No Products</td>
+    </tr>
+{% endfor %}

@@ -89,23 +89,28 @@ table.table td:last-child i{
     margin: 0 5px;
 }
 
-table.table td a{
+table.table td.btn-group{
+    display: inline-flex;
+}
+
+table.table td button{
     font-weight: bold;
     color: #566787;
-    display: inline-block;
     text-decoration: none;
+    border: none;
+    background: none;
     outline: none !important;
 }
 
-table.table td a:hover{
+table.table td button:hover{
     color: #2196f3;
 }
 
-table.table td a.edit {
+table.table td button.edit {
     color: #ffc107;
 }
 
-table.table td a.delete{
+table.table td button.delete{
     color: #f44336;
 }
 
