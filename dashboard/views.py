@@ -44,3 +44,16 @@ def product_update(request, pk):
     else:
         form = ProductForm(instance=product)
     return save_product_form(request, form, 'dashboard/partial_product_update.html')
+
+def product_delete(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    data = dict()
+    if request.method == 'POST':
+        product.delete()
+        data['form_is_valid'] = True
+        products = Product.objects.all()
+        data['html_product_list'] = render_to_string('dashboard/partial_product_list.html', {'products': products})
+    else:
+        context = {'product': product}
+        data['html_form'] = render_to_string('dashboard/partial_product_delete.html', context, request=request)
+    return JsonResponse(data)

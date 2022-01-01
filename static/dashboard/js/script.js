@@ -68,4 +68,8 @@ $(document).ready(function(){
     /** Update Product */
     $('#product-table').on('click', ".js-update-product", loadForm);
     $('#addProductModal').on('submit', '.js-product-update-form', saveForm);
+
+    /** Delete Product */
+    $('#product-table').on('click', '.js-delete-product', loadForm);
+    $('#addProductModal').on('submit', '.js-product-delete-form', saveForm);
 });

@@ -17,7 +17,7 @@
             <button type="button" class="edit js-update-product" data-url="{% url 'product-update' product.id %}">
                 <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
             </button>
-            <button type="button" class="delete js-delete-product" data-url="">
+            <button type="button" class="delete js-delete-product" data-url="{% url 'product-delete' product.id %}">
                 <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></span>
             </button>
         </td>

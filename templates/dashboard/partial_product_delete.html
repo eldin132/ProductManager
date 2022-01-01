@@ -1,0 +1,14 @@
+<form method="POST" action="{% url 'product-delete' product.id %}" class="js-product-delete-form">
+    {% csrf_token %}
+    <div class="modal-header">
+        <h4 class="modal-title">Confirm Product Deletion</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    </div>
+    <div class="modal-body">
+        <p class="lead">Are you sure you want to delete product <strong>{{ product.name }}</strong>?</p>
+    </div>
+    <div class="modal-footer">
+        <input type="button" value="Cancel" class="btn btn-default" data-dismiss="modal">
+        <input type="submit" value="Delete Product" class="btn btn-info">
+    </div>
+</form>
