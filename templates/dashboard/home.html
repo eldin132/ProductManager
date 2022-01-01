@@ -18,9 +18,9 @@
                         <button type="button" class="btn btn-success js-create-product" data-url="{% url 'product-create' %}">
                             <i class="material-icons">&#xE147;</i> <span>Add New Product</span>
                         </button>
-                        <a href="#deleteProductModal" class="btn btn-danger" data-toggle="modal">
+                        <button type="button" class="btn btn-danger js-delete-all-products" data-url="{% url 'product-delete-all' %}">
                             <i class="material-icons">&#xE15C;</i> <span>Delete All</span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 </tbody>
             </table>
             <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>100</b> entries</div>
+                <div class="hint-text">Showing <b id="items">{{total_products}}</b> out of <b id="entries">{{total_products}}</b> entries</div>
                 <ul class="pagination">
                     <li class="page-item disabled"><a href="#">Previous</a></li>
                     <li class="page-item"><a href="#" class="page-link">1</a></li>
@@ -78,12 +78,31 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <p>Are you want to delete these Records?</p>
-                                <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                
                             </div>
                             <div class="modal-footer">
                                 <input type="button" value="Cancel" class="btn btn-default" data-dismiss="modal">
                                 <input type="submit" value="Delete" class="btn btn-danger">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prompt Modal -->
+            <div id="promptModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Error Prompt</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                No products are checked
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" value="Close" class="btn btn-default" data-dismiss="modal">
                             </div>
                         </form>
                     </div>
