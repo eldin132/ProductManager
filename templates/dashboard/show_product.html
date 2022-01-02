@@ -1,0 +1,33 @@
+<form method="GET" action="{% url 'show-product' product.id %}">
+    <div class="modal-header">
+        <h4 class="modal-title">Product Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    </div>
+    <div class="modal-body">
+        <table class="table table-bordered">
+            <tr>
+                <td><b>Name</b></td>
+                <td><p>{{product.name}}</p></td>
+            </tr>
+            <tr>
+                <td><b>Price</b></td>
+                <td><p>{{product.price}}</p></td>
+            </tr>
+            <tr>
+                <td><b>Quantity</b></td>
+                <td><p>{{product.quantity}}</p></td>
+            </tr>
+            <tr>
+                <td><b>Category</b></td>
+                <td><p>{{product.category}}</p></td>
+            </tr>
+            <tr>
+                <td><b>Date Added</b></td>
+                <td><p>{{product.date_added}}</p></td>
+            </tr>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <input type="button" value="Close" class="btn btn-default" data-dismiss="modal">
+    </div>
+</form>

@@ -90,6 +90,8 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data){
                 if (data.form_is_valid){
+                    $('#items').html(data.total_products);
+                    $('#entries').html(data.total_products);
                     $('#product-table tbody').html(data.html_product_list);
                     $('#deleteProductModal').modal('hide');
                 }
@@ -109,7 +111,8 @@ $(document).ready(function(){
         var checks = $('#checkbox1:checked');
         console.log(checks);
         if(checks.length == 0){
-            $('#promptModal').modal('show');
+            $('#showProductModal .modal-content').html("");
+            $('#showProductModal').modal("show");
         }else{
             var btn = $(this);
             $.ajax({
@@ -129,6 +132,24 @@ $(document).ready(function(){
         
     }
 
+    var loadShowModal = function(){
+        var btn = $(this);
+        $.ajax({
+            url: btn.attr('data-url'),
+            type: 'GET',
+            dataType: 'json',
+            beforeSend: function(){
+                $('#showProductModal .modal-content').html("");
+                $('#showProductModal').modal("show");
+            },
+            success: function(data){
+                $("#showProductModal .modal-content").html(data.html_form);
+            }
+        });
+
+        return false;
+    }
+
     /** Binding */
     $('.js-create-product').click(loadForm);
     $("#addProductModal").on('submit', ".js-product-create-form", saveForm);
@@ -144,4 +165,7 @@ $(document).ready(function(){
     /** Delete Products */
     $('.js-delete-all-products').click(load_delete_modal);
     $('#deleteProductModal').on('submit', '.js-product-mass-delete-form', save_delete_form);
+
+    /** Show Product */
+    $('.js-show-product').click(loadShowModal);
 });

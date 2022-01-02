@@ -56,6 +56,7 @@ def product_delete(request, pk):
         product.delete()
         data['form_is_valid'] = True
         products = Product.objects.all()
+        data['total_products'] = products.count()
         data['html_product_list'] = render_to_string('dashboard/partial_product_list.html', {'products': products})
     else:
         context = {'product': product}
@@ -73,6 +74,7 @@ def product_mass_delete(request):
         
         data['form_is_valid'] = True
         products = Product.objects.all()
+        data['total_products'] = products.count()
         data['html_product_list'] = render_to_string('dashboard/partial_product_list.html', {'products': products})
 
     else:
@@ -81,4 +83,12 @@ def product_mass_delete(request):
        data['form_is_vald'] = False
        data['html_form'] = render_to_string('dashboard/partial_product_delete_all.html', context, request=request)
     
+    return JsonResponse(data)
+
+def show_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    data = dict()
+    if request.method == 'GET':
+        context = {'product': product}
+        data['html_form'] = render_to_string('dashboard/show_product.html', context, request=request)
     return JsonResponse(data)

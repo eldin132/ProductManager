@@ -271,3 +271,16 @@ table.table .avatar{
 .modal form label{
     font-weight: normal;
 }
+
+.show-link{
+    text-decoration: none;
+    color: #78aed3;
+}
+
+.heading{
+    display: block;
+    text-align: center;
+    font-size: 23pt;
+    margin: 20px 20px 0 0;
+    letter-spacing: 0.3em;
+}

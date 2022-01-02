@@ -7,7 +7,7 @@
             </span>
         </td>
         <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
+        <td><a href="" class="show-link js-show-product" data-url="{% url 'show-product' product.id %}">{{ product.name }}</a></td>
         <td>{{ product.date_added }}</td>
         <td>{{ product.category }}</td>
         <td>{{ product.product_code }}</td>
